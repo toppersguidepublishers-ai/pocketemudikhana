@@ -897,6 +897,83 @@ button.promise svg{color:#e53935}
 footer{padding-block:20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
 @media (prefers-reduced-motion:no-preference){.card{transition:transform .15s}.card:hover{transform:translateY(-2px)}}
+
+/* ===== ইমার্জেন্সি অর্ডার ===== */
+:root{--emg:#d32f2f;--emg-ink:#ffffff;--emg-soft:#fdecea;--emg-line:#f3c1bd;--emg-text:#7f1d1d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--emg:#ef5350;--emg-ink:#ffffff;--emg-soft:#3a1a19;--emg-line:#6b2b28;--emg-text:#ffd7d3}}
+:root[data-theme="dark"]{--emg:#ef5350;--emg-ink:#ffffff;--emg-soft:#3a1a19;--emg-line:#6b2b28;--emg-text:#ffd7d3}
+.fab3{position:fixed;right:max(16px,calc(env(safe-area-inset-right,0px) + 12px));bottom:calc(166px + env(safe-area-inset-bottom,0px));z-index:7;
+  width:166px;height:38px;box-sizing:border-box;display:flex;align-items:center;gap:7px;padding:0 11px;border:2px solid #fff;border-radius:999px;
+  background:var(--emg);color:var(--emg-ink);font:inherit;font-size:15px;font-weight:700;line-height:1;white-space:nowrap;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28)}
+.fab3 svg{width:22px;height:22px;flex:none}
+@media (prefers-reduced-motion: no-preference){
+  .fab3{animation:emgPulse 1.8s ease-out infinite}
+  .fab3 svg{animation:emgBeat 1.8s ease-in-out infinite}
+}
+@keyframes emgPulse{0%{box-shadow:0 4px 14px rgba(0,0,0,.28),0 0 0 0 rgba(211,47,47,.55)}70%{box-shadow:0 4px 14px rgba(0,0,0,.28),0 0 0 12px rgba(211,47,47,0)}100%{box-shadow:0 4px 14px rgba(0,0,0,.28),0 0 0 0 rgba(211,47,47,0)}}
+@keyframes emgBeat{0%,40%,100%{transform:scale(1)}15%{transform:scale(1.18)}28%{transform:scale(.96)}}
+
+#emgSheet .panel{gap:14px;padding-top:0}
+.emgTop{position:sticky;top:0;z-index:2;margin:0 calc(-1 * max(16px,env(safe-area-inset-right,0px))) 0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:14px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));
+  background:var(--emg);color:var(--emg-ink);display:flex;align-items:center;gap:10px;border-radius:16px 16px 0 0}
+.emgTop h2{margin:0;font-size:20px;flex:1;display:block}
+.emgTop .sub{font-size:13px;font-weight:500;opacity:.92;margin-top:2px}
+.emgTop .x{color:#fff;font-size:28px}
+.emgBadge{width:40px;height:40px;border-radius:12px;background:#fff;display:grid;place-items:center;flex:none}
+.sos{background:var(--emg-soft);border:1px solid var(--emg-line);color:var(--emg-text);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.sos b{color:var(--emg-text)}
+.sosRow{display:flex;gap:8px;flex-wrap:wrap}
+.sosRow a{flex:1 1 90px;text-align:center;text-decoration:none;border-radius:10px;padding:9px 6px;font-weight:700;background:var(--emg);color:#fff}
+.sosRow a.alt{background:transparent;color:var(--emg-text);border:1.5px solid var(--emg-line)}
+.esec{display:flex;flex-direction:column;gap:8px}
+.esec h3{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+.esec h3 .n{width:24px;height:24px;border-radius:50%;background:var(--emg);color:#fff;display:grid;place-items:center;font-size:13px;flex:none}
+.echips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.echips .chip[aria-pressed="true"]{background:var(--emg);border-color:var(--emg);color:#fff}
+.egrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.etile{position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:6px 6px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;min-width:0;cursor:pointer;font:inherit;color:var(--ink)}
+.etile.on{border-color:var(--emg);background:var(--emg-soft)}
+.etile .epic{width:100%;aspect-ratio:1;display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 50% 40%,var(--surface) 0%,var(--turmeric-soft) 80%);overflow:hidden}
+.etile .epic img,.etile .epic svg{width:82%;height:82%;object-fit:contain}
+.etile .epic img.photo{width:100%;height:100%;object-fit:cover}
+.etile .en{font-size:13px;font-weight:600;line-height:1.25;overflow-wrap:anywhere}
+.etile .eu{font-size:12px;color:var(--muted)}
+.etile .ep{font-size:13px;font-weight:700;color:var(--leaf)}
+.etile .tick{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:var(--emg);color:#fff;font-size:13px;font-weight:700;display:none;place-items:center}
+.etile.on .tick{display:grid}
+.eqty{display:flex;align-items:center;border-radius:8px;overflow:hidden;background:var(--emg);color:#fff;margin-top:2px}
+.eqty button{background:none;border:0;color:#fff;font:inherit;font-size:18px;font-weight:700;width:30px;height:28px;cursor:pointer}
+.eqty span{min-width:22px;text-align:center;font-weight:700}
+.eadd{margin-top:2px;background:var(--surface);color:var(--emg);border:1.5px solid var(--emg);border-radius:8px;padding:3px 12px;font:inherit;font-weight:700;pointer-events:none}
+.etile .oos{margin-top:2px}
+.upl{border:2px dashed var(--emg-line);background:var(--emg-soft);color:var(--emg-text);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;font-weight:600}
+.upl svg{flex:none}
+.upl small{display:block;font-weight:400;font-size:12.5px;opacity:.85}
+.ephotos{display:flex;gap:8px;flex-wrap:wrap}
+.ephoto{position:relative;width:84px;height:84px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.ephoto img{width:100%;height:100%;object-fit:cover}
+.ephoto button{position:absolute;top:3px;right:3px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.eor{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.eor::before,.eor::after{content:"";flex:1;border-top:1px dashed var(--line)}
+#emgSheet textarea{min-height:92px;resize:vertical}
+#emgSheet label{display:flex;flex-direction:column;gap:4px;font-weight:600}
+.ewarn{background:var(--emg-soft);border:1px solid var(--emg-line);border-radius:12px;padding:10px 12px;font-size:14px;color:var(--ink)}
+.ewarn h4{margin:0 0 6px;font-size:15px;color:var(--emg-text);display:flex;align-items:center;gap:6px}
+.ewarn ol{margin:0;padding-left:22px;list-style-type:bengali;display:flex;flex-direction:column;gap:5px}
+.ewarn li b{color:var(--emg-text)}
+.erow2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.erow2>label{min-width:0}
+#emgSheet input:not([type=radio]):not([type=checkbox]),#emgSheet textarea,#emgSheet select{width:100%;box-sizing:border-box;min-width:0}
+@media (max-width:380px){.erow2{grid-template-columns:1fr}}
+.eloc{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.esend{background:var(--emg)!important;color:#fff!important;font-size:17px!important}
+.esend[disabled]{opacity:.5}
+.esum{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.esum .li{display:flex;justify-content:space-between;gap:8px}
+.esum .li button{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;padding:0 2px}
+.ebtn{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:12px;padding:14px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;width:100%;box-sizing:border-box}
+.ebtn.wa{background:#25a35a;color:#fff}
+.ebtn.call2{background:transparent;color:var(--emg);border:1.5px solid var(--emg)}
 </style>
 
 <header>
@@ -938,6 +1015,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,te
 
 <button class="fab2" type="button" id="customFab"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 7v10M7 12h10" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span>পছন্দমতো অর্ডার</span></button>
 
+<button class="fab3" type="button" id="emgFab" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5" fill="#fff"/><path d="M10 5.5h4v4.5h4.5v4H14v4.5h-4V14H5.5v-4H10z" fill="#d32f2f"/></svg><span>ইমার্জেন্সি অর্ডার</span></button>
 <div class="splash" id="splash" hidden role="dialog" aria-label="পছন্দমতো অর্ডার">
   <div class="spItems" id="spItems" aria-hidden="true"></div>
   <div class="spCard">
@@ -1021,6 +1099,96 @@ button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,te
   </div>
 </div>
 
+<div class="sheet" id="emgSheet" hidden role="dialog" aria-modal="true" aria-labelledby="emgTitle">
+  <div class="panel">
+    <div class="emgTop">
+      <span class="emgBadge" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M9 3.5h6v5.5h5.5v6H15v5.5H9V15H3.5V9H9z" fill="#d32f2f"/></svg></span>
+      <div style="flex:1;min-width:0"><h2 id="emgTitle">ইমার্জেন্সি অর্ডার</h2><div class="sub">ওষুধ, শিশুর খাবার ও জরুরি জিনিস, সবার আগে ডেলিভারি</div></div>
+      <button class="x" type="button" id="emgClose" aria-label="বন্ধ করুন">×</button>
+    </div>
+
+    <div id="emgForm">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="sos" role="note">
+          <div><b>প্রাণ সংশয় হলে অপেক্ষা করবেন না।</b> শ্বাসকষ্ট, বুকে ব্যথা, অজ্ঞান হয়ে যাওয়া, বেশি রক্তপাত, খিঁচুনি বা বিষ খেয়ে ফেললে আগে অ্যাম্বুলেন্স ডাকুন বা নিকটতম হাসপাতালে যান।</div>
+          <div class="sosRow">
+            <a href="tel:108">📞 ১০৮ অ্যাম্বুলেন্স</a>
+            <a href="tel:112" class="alt">📞 ১১২ জরুরি</a>
+            <a href="tel:+919832959081" class="alt" id="emgShopCall">📞 দোকান</a>
+          </div>
+        </div>
+
+        <section class="esec" aria-labelledby="eh1">
+          <h3 id="eh1"><span class="n">১</span>জরুরি জিনিস: ছুঁয়ে বাছুন</h3>
+          <div class="echips" id="eCats" role="toolbar" aria-label="জরুরি জিনিসের বিভাগ"></div>
+          <div class="egrid" id="eGrid"></div>
+          <div class="note">ছবিতে চাপলে তালিকায় যোগ হবে, − + দিয়ে সংখ্যা বদলান। দাম আমাদের দোকানের তালিকা অনুযায়ী।</div>
+        </section>
+
+        <section class="esec" aria-labelledby="eh2">
+          <h3 id="eh2"><span class="n">২</span>ওষুধ লাগবে? প্রেসক্রিপশন দিন</h3>
+          <label class="upl" for="ePhoto">
+            <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3zm3 4.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+            <span>প্রেসক্রিপশনের ছবি তুলুন বা গ্যালারি থেকে দিন<small>পুরো পাতা, ডাক্তারের নাম ও তারিখ যেন পরিষ্কার পড়া যায় (৩টি পর্যন্ত)</small></span>
+          </label>
+          <input type="file" id="ePhoto" accept="image/*" multiple hidden>
+          <div class="ephotos" id="ePhotos"></div>
+          <div class="eor">অথবা / সঙ্গে</div>
+          <label for="eMeds">ওষুধের নাম লিখে দিন
+            <textarea id="eMeds" placeholder="প্রতি লাইনে একটি ওষুধ: নাম, পাওয়ার (যেমন ৫০০ mg) আর কত পাতা / বোতল লাগবে"></textarea>
+          </label>
+          <div class="erow2">
+            <label for="eAge">রোগী বা শিশুর বয়স (ঐচ্ছিক)<input id="eAge" placeholder="যেমন: ৮ মাস / ৬৫ বছর"></label>
+            <label for="eOther">অন্য কিছু লাগলে (ঐচ্ছিক)<input id="eOther" placeholder="যেমন: শিশুর দুধ স্টেজ ১"></label>
+          </div>
+        </section>
+
+        <div class="ewarn" role="note">
+          <h4>⚠️ জরুরি সতর্কতা: অবশ্যই পড়ুন</h4>
+          <ol>
+            <li><b>প্রেসক্রিপশন লাগে এমন ওষুধ</b> (যেমন অ্যান্টিবায়োটিক, ঘুমের বা মানসিক রোগের ওষুধ, ইনজেকশন) বৈধ প্রেসক্রিপশন ছাড়া আনা হবে না। ডেলিভারির সময় আসল প্রেসক্রিপশন দেখাতে হতে পারে।</li>
+            <li>ওষুধ <b>লাইসেন্সপ্রাপ্ত ওষুধের দোকান থেকে কিনে</b> পৌঁছে দেওয়া হয়। ওষুধের দাম দোকানের বিল অনুযায়ী, বিল সঙ্গে দেওয়া হবে। ডেলিভারি চার্জ WhatsApp-এ জানানো হবে।</li>
+            <li>আমরা ডাক্তার নই। <b>কোন ওষুধ, কতটা, কখন খাবেন</b> তা শুধু ডাক্তার বা ফার্মাসিস্টের পরামর্শমতো ঠিক করুন।</li>
+            <li>কোনো ওষুধ না পেলে <b>আপনার অনুমতি ছাড়া অন্য কোম্পানির বা বদলি ওষুধ দেওয়া হবে না</b>। আগে ফোন বা WhatsApp-এ জানানো হবে।</li>
+            <li>ডেলিভারি নেওয়ার সময় <b>ওষুধের নাম, পাওয়ার আর মেয়াদ (Expiry)</b> মিলিয়ে নিন। প্যাকেট ছেঁড়া বা মেয়াদ পেরোনো হলে নেবেন না।</li>
+            <li><b>শিশুর খাবার ও দুধ</b>: শিশুর বয়স অনুযায়ী সঠিক স্টেজ লিখুন। ডাক্তার যে ফর্মুলা বলেছেন সেটাই দিন।</li>
+            <li>রাতে বা দোকান বন্ধ থাকলে ওষুধ পেতে দেরি হতে পারে। তাড়া থাকলে অর্ডারের পর দোকানে ফোন করুন।</li>
+          </ol>
+        </div>
+
+        <section class="esec" aria-labelledby="eh3">
+          <h3 id="eh3"><span class="n">৩</span>কোথায় পৌঁছাবে</h3>
+          <div class="erow2">
+            <label for="eName">নাম<input id="eName" autocomplete="name"></label>
+            <label for="ePhone">মোবাইল নম্বর<input id="ePhone" inputmode="tel" autocomplete="tel" maxlength="10" placeholder="১০ সংখ্যা"></label>
+          </div>
+          <label for="eAddr">পুরো ঠিকানা (বাড়ি নং, পাড়া, কাছের চিহ্ন)<textarea id="eAddr" style="min-height:64px"></textarea></label>
+          <label for="eArea">এলাকা<select id="eArea"></select></label>
+          <div class="eloc"><button class="btn ghost" type="button" id="eLocBtn">📍 আমার এখনকার লোকেশন দিন</button><span class="note" id="eLocMsg"></span></div>
+          <fieldset><legend style="font-weight:600;padding:0 4px">পেমেন্ট</legend>
+            <label style="flex-direction:row;align-items:center;gap:8px;font-weight:400"><input type="radio" name="epay" value="ডেলিভারির সময় UPI" checked> ডেলিভারির সময় UPI</label>
+            <label style="flex-direction:row;align-items:center;gap:8px;font-weight:400"><input type="radio" name="epay" value="ক্যাশ অন ডেলিভারি"> ক্যাশ অন ডেলিভারি</label>
+          </fieldset>
+        </section>
+
+        <div class="esum" id="eSum" hidden></div>
+        <label class="agree"><input type="checkbox" id="eAgree"> আমি উপরের সতর্কতাগুলো পড়েছি ও মেনে নিচ্ছি</label>
+        <div class="err" id="eErr" aria-live="polite"></div>
+        <button class="btn primary esend" type="button" id="eSend" disabled>🚨 ইমার্জেন্সি অর্ডার তৈরি করুন</button>
+      </div>
+    </div>
+
+    <div id="emgDone" hidden style="display:flex;flex-direction:column;gap:12px">
+      <div class="warn" id="ePhotoTip" hidden></div>
+      <button class="ebtn wa" type="button" id="eShare" hidden>📎 প্রেসক্রিপশনের ছবি সহ WhatsApp-এ পাঠান</button>
+      <a class="ebtn wa" id="eWa" href="#" target="_blank" rel="noopener">WhatsApp-এ অর্ডার পাঠান</a>
+      <a class="ebtn call2" href="tel:+919832959081" id="eCallShop">📞 দোকানে ফোন করে তাড়া দিন</a>
+      <pre class="msg" id="eMsg"></pre>
+      <button class="btn ghost" type="button" id="eCopy">অর্ডারের লেখা কপি করুন</button>
+      <button class="btn ghost" type="button" id="eBack">← অর্ডার বদলান</button>
+    </div>
+  </div>
+</div>
 <div class="cartbar" id="cartbar" hidden>
   <button type="button" id="openCart"><span id="cbCount">০টি জিনিস</span><span id="cbTotal">কার্ট দেখুন →</span></button>
 </div>
@@ -1637,7 +1805,7 @@ addEventListener("resize",fitTagline);
 $("hintCustom").addEventListener("click",()=>$("customFab").click());
 /* ফোন: নিজের ওয়েবসাইটে সরাসরি কল; প্রিভিউর ভেতরে (ফ্রেমে) নম্বর বড় করে দেখায় আর কপি করা যায় */
 const framed = (()=>{ try{ return window.self!==window.top; }catch(e){ return true; } })();
-document.querySelectorAll('a[href^="tel:"]').forEach(a=>{ if(a.id==="callNow") return; a.addEventListener("click",e=>{ if(framed){ e.preventDefault(); $("callSheet").hidden=false; } }); });
+document.querySelectorAll('a[href^="tel:"]').forEach(a=>{ if(a.id==="callNow"||/^tel:1(08|12)$/.test(a.getAttribute("href"))) return; a.addEventListener("click",e=>{ if(framed){ e.preventDefault(); $("callSheet").hidden=false; } }); });
 $("closeCall").addEventListener("click",()=>{ $("callSheet").hidden=true; });
 $("callSheet").addEventListener("click",e=>{ if(e.target===$("callSheet")) $("callSheet").hidden=true; });
 $("callCopy").addEventListener("click",()=>{ const b=$("callCopy");
@@ -1712,6 +1880,161 @@ const _render=render;
 let lastCat="সব";
 render=function(){ _render(); if(cat!=="সব" && lastCat==="সব"){ try{ history.pushState({inCat:1},""); }catch(e){} } lastCat=cat; };
 chips(); render(); loadSheet();
+
+/* ===== ইমার্জেন্সি অর্ডার =====
+   তালিকায় নাম বদলাতে চাইলে নিচের EMG অংশে পণ্যের নাম লিখুন — নাম Google Sheet-এর "পণ্যের নাম"-এর সঙ্গে হুবহু মিলতে হবে।
+   শিটে না থাকলে সেই নামটা এখানে দেখাবে না। */
+const EMG = [
+  ["প্রাথমিক চিকিৎসা", ["ORS","থার্মোমিটার","ব্যান্ডেজ স্ট্রিপ","তুলো","গজ ব্যান্ডেজ","অ্যান্টিসেপটিক লিকুইড","অ্যান্টিসেপটিক ক্রিম","মাস্ক","হ্যান্ড স্যানিটাইজার","গ্লুকোজ পাউডার","গ্লুকোজ/ইলেকট্রোলাইট পানীয়"]],
+  ["শিশুর জরুরি", ["শিশুর দুধের ফর্মুলা","শিশুর সিরিয়াল","ডায়াপার (ছোট)","ডায়াপার (মাঝারি)","ডায়াপার প্যান্ট (বড়)","বেবি ওয়াইপস"]],
+  ["অন্যান্য জরুরি", ["স্যানিটারি প্যাড","স্যানিটারি প্যাড (XL)","টর্চ","মোমবাতি","ব্যাটারি (AA)","দেশলাই"]]
+];
+let eCat = "সব", eSel = {}, ePhotos = [], eGeo = "", eMsgText = "";
+const eFind = n => P.find(x => x.name === n);
+const eItems = () => Object.entries(eSel).filter(([,q]) => q > 0).map(([k,q]) => { const p = P.find(x => x.key === k); return p ? {p,q} : null; }).filter(Boolean);
+
+function eDrawCats(){
+  const cats = ["সব", ...EMG.map(c => c[0])];
+  $("eCats").innerHTML = cats.map(c => `<button class="chip" type="button" aria-pressed="${c===eCat}" data-ec="${esc(c)}">${esc(c)}</button>`).join("");
+}
+function eDrawGrid(){
+  const names = (eCat === "সব" ? EMG : EMG.filter(c => c[0] === eCat)).flatMap(c => c[1]);
+  const seen = new Set();
+  const list = names.map(eFind).filter(p => p && !seen.has(p.key) && seen.add(p.key));
+  $("eGrid").innerHTML = list.length ? list.map(p => {
+    const q = eSel[p.key] || 0;
+    const ctl = !p.stock ? `<span class="oos">স্টকে নেই</span>`
+      : q ? `<div class="eqty"><button type="button" data-edec="${esc(p.key)}" aria-label="কমান">−</button><span>${bn(q)}</span><button type="button" data-einc="${esc(p.key)}" aria-label="বাড়ান">+</button></div>`
+      : `<span class="eadd">যোগ</span>`;
+    return `<div class="etile${q ? " on" : ""}" role="button" tabindex="0" data-ek="${esc(p.key)}" aria-label="${esc(p.name)}${q ? ", তালিকায় " + bn(q) + "টি" : ""}"><span class="tick" aria-hidden="true">✓</span><div class="epic" aria-hidden="true">${prodPic(p)}</div><div class="en">${esc(p.name)}</div><div class="eu">${esc(p.unit)}</div><div class="ep">${tk(p.price)}</div>${ctl}</div>`;
+  }).join("") : `<div class="note" style="grid-column:1/-1">এই বিভাগে এখন কিছু নেই। নিচে লিখে দিন।</div>`;
+}
+function eDrawPhotos(){
+  $("ePhotos").innerHTML = ePhotos.map((f,i) => `<div class="ephoto"><img src="${f.url}" alt="প্রেসক্রিপশন ${bn(i+1)}"><button type="button" data-erm="${i}" aria-label="ছবি বাদ দিন">×</button></div>`).join("");
+}
+function eDrawSum(){
+  const it = eItems(), meds = $("eMeds").value.trim();
+  const box = $("eSum");
+  if(!it.length && !ePhotos.length && !meds){ box.hidden = true; return; }
+  const sub = it.reduce((s,i) => s + i.p.price * i.q, 0);
+  box.hidden = false;
+  box.innerHTML = `<b>আপনার ইমার্জেন্সি তালিকা</b>` +
+    it.map(i => `<div class="li"><span>${esc(i.p.name)} (${esc(i.p.unit)}) × ${bn(i.q)}</span><span>${tk(i.p.price*i.q)} <button type="button" data-edel="${esc(i.p.key)}" aria-label="বাদ দিন">✕</button></span></div>`).join("") +
+    (ePhotos.length ? `<div class="li"><span>প্রেসক্রিপশনের ছবি</span><span>${bn(ePhotos.length)}টি</span></div>` : "") +
+    (meds ? `<div class="li"><span>লেখা ওষুধ</span><span>${bn(meds.split("\n").filter(s => s.trim()).length)}টি লাইন</span></div>` : "") +
+    (it.length ? `<div class="li" style="border-top:1px solid var(--line);padding-top:4px"><b>জিনিসের দাম</b><b>${tk(sub)}</b></div>` : "") +
+    ((ePhotos.length || meds) ? `<div class="note">ওষুধের দাম দোকানের বিল অনুযায়ী যোগ হবে।</div>` : "");
+}
+function eRefresh(){ eDrawGrid(); eDrawSum(); }
+
+function eSaveInfo(){
+  try{ localStorage.setItem("emgInfo", JSON.stringify({n:$("eName").value, p:$("ePhone").value, a:$("eAddr").value})); }catch(e){}
+}
+function openEmg(){
+  let info = {}; try{ info = JSON.parse(localStorage.getItem("emgInfo") || "{}") || {}; }catch(e){}
+  if(!$("eName").value) $("eName").value = info.n || $("fName").value || "";
+  if(!$("ePhone").value) $("ePhone").value = info.p || $("fPhone").value || "";
+  if(!$("eAddr").value) $("eAddr").value = info.a || $("fAddr").value || "";
+  const cur = $("eArea").value || $("fArea").value;
+  $("eArea").innerHTML = $("fArea").innerHTML; $("eArea").value = cur;
+  $("emgForm").hidden = false; $("emgDone").hidden = true;
+  eDrawCats(); eRefresh();
+  $("emgSheet").hidden = false;
+  try{ $("emgSheet").querySelector(".panel").scrollTop = 0; }catch(e){}
+}
+function closeEmg(){ $("emgSheet").hidden = true; }
+
+$("emgFab").addEventListener("click", openEmg);
+$("emgClose").addEventListener("click", closeEmg);
+$("emgSheet").addEventListener("click", e => { if(e.target === $("emgSheet")) closeEmg(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && !$("emgSheet").hidden) closeEmg(); });
+
+$("eCats").addEventListener("click", e => { const b = e.target.closest("[data-ec]"); if(!b) return; eCat = b.dataset.ec; eDrawCats(); eDrawGrid(); });
+$("eGrid").addEventListener("click", e => {
+  const inc = e.target.closest("[data-einc]"), dec = e.target.closest("[data-edec]");
+  if(inc){ eSel[inc.dataset.einc] = (eSel[inc.dataset.einc] || 0) + 1; eRefresh(); return; }
+  if(dec){ const k = dec.dataset.edec; eSel[k] = Math.max(0, (eSel[k] || 0) - 1); if(!eSel[k]) delete eSel[k]; eRefresh(); return; }
+  const t = e.target.closest("[data-ek]"); if(!t) return;
+  const p = P.find(x => x.key === t.dataset.ek); if(!p || !p.stock) return;
+  if(!eSel[p.key]){ eSel[p.key] = 1; eRefresh(); }
+});
+$("eGrid").addEventListener("keydown", e => { if((e.key === "Enter" || e.key === " ") && e.target.matches(".etile")){ e.preventDefault(); e.target.click(); } });
+$("eSum").addEventListener("click", e => { const b = e.target.closest("[data-edel]"); if(!b) return; delete eSel[b.dataset.edel]; eRefresh(); });
+
+$("ePhoto").addEventListener("change", e => {
+  const files = [...(e.target.files || [])].filter(f => /^image\//.test(f.type));
+  for(const f of files){ if(ePhotos.length >= 3) break; ePhotos.push({file:f, url:URL.createObjectURL(f)}); }
+  e.target.value = ""; eDrawPhotos(); eDrawSum();
+  if(files.length && ePhotos.length >= 3) $("eErr").textContent = files.length > 3 ? "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।" : "";
+});
+$("ePhotos").addEventListener("click", e => { const b = e.target.closest("[data-erm]"); if(!b) return; const i = +b.dataset.erm; try{ URL.revokeObjectURL(ePhotos[i].url); }catch(x){} ePhotos.splice(i,1); eDrawPhotos(); eDrawSum(); });
+$("eMeds").addEventListener("input", eDrawSum);
+$("eAgree").addEventListener("change", e => { $("eSend").disabled = !e.target.checked; });
+["eName","ePhone","eAddr"].forEach(id => $(id).addEventListener("change", eSaveInfo));
+$("eArea").addEventListener("change", e => { try{ setArea(e.target.value); }catch(x){} });
+
+$("eLocBtn").addEventListener("click", () => {
+  if(!navigator.geolocation){ $("eLocMsg").textContent = "এই ফোনে লোকেশন পাওয়া যাচ্ছে না। অর্ডারের পর WhatsApp-এ লাইভ লোকেশন পাঠান।"; return; }
+  $("eLocMsg").textContent = "লোকেশন খোঁজা হচ্ছে…";
+  navigator.geolocation.getCurrentPosition(pos => {
+    const {latitude:a, longitude:b} = pos.coords;
+    eGeo = `https://maps.google.com/?q=${a.toFixed(6)},${b.toFixed(6)}`;
+    $("eLocMsg").textContent = "✓ লোকেশন যোগ হয়েছে";
+  }, () => { $("eLocMsg").textContent = "লোকেশন পাওয়া গেল না। অর্ডারের পর WhatsApp-এ লাইভ লোকেশন পাঠান।"; }, {enableHighAccuracy:true, timeout:15000, maximumAge:60000});
+});
+
+$("eSend").addEventListener("click", () => {
+  const it = eItems(), meds = $("eMeds").value.trim(), other = $("eOther").value.trim(), age = $("eAge").value.trim();
+  const name = $("eName").value.trim(), phone = $("ePhone").value.trim().replace(/\s/g,""), addr = $("eAddr").value.trim(), area = $("eArea").value;
+  let err = "";
+  if(!it.length && !ePhotos.length && !meds && !other) err = "কী লাগবে তা বাছুন, প্রেসক্রিপশনের ছবি দিন বা ওষুধের নাম লিখুন।";
+  else if(!name) err = "নাম লিখুন।";
+  else if(!/^[6-9]\d{9}$/.test(phone)) err = "১০ সংখ্যার সঠিক মোবাইল নম্বর লিখুন।";
+  else if(addr.length < 8) err = "পুরো ঠিকানা লিখুন, যাতে তাড়াতাড়ি পৌঁছানো যায়।";
+  else if(!area) err = "এলাকা বেছে নিন।";
+  else if(!$("eAgree").checked) err = "সতর্কতাগুলো পড়ে টিক দিন।";
+  $("eErr").textContent = err; if(err) return;
+  eSaveInfo();
+  const pay = document.querySelector('input[name="epay"]:checked').value;
+  const sub = it.reduce((s,i) => s + i.p.price * i.q, 0);
+  const g = eGeo || (typeof geo !== "undefined" && geo) || "";
+  eMsgText = `🚨 ইমার্জেন্সি অর্ডার — ${CONFIG.shopName}\nদয়া করে তাড়াতাড়ি দেখুন\n` +
+    (it.length ? `\nজরুরি জিনিস:\n` + it.map((i,n) => `${bn(n+1)}. ${i.p.name} (${i.p.unit}) × ${bn(i.q)} = ${tk(i.p.price*i.q)}`).join("\n") + `\nজিনিসের দাম: ${tk(sub)}` : "") +
+    (ePhotos.length || meds ? `\n\n💊 ওষুধ:` : "") +
+    (ePhotos.length ? `\nপ্রেসক্রিপশনের ${bn(ePhotos.length)}টি ছবি পাঠাচ্ছি` : "") +
+    (meds ? `\n` + meds.split("\n").map(s => s.trim()).filter(Boolean).map((s,n) => `${bn(n+1)}. ${s}`).join("\n") : "") +
+    (ePhotos.length || meds ? `\n(ওষুধের দাম দোকানের বিল অনুযায়ী)` : "") +
+    (other ? `\n\nঅন্যান্য: ${other}` : "") +
+    (age ? `\nরোগী/শিশুর বয়স: ${age}` : "") +
+    `\n\nনাম: ${name}\nফোন: ${phone}\nঠিকানা: ${addr}\nএলাকা: ${area}\nপেমেন্ট: ${pay}` +
+    `\nম্যাপে লোকেশন: ${g || "লাইভ লোকেশন আলাদা পাঠাচ্ছি"}` +
+    `\n\n✓ সতর্কতাগুলো পড়েছি ও মেনে নিয়েছি।`;
+  $("eMsg").textContent = eMsgText;
+  $("eWa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(eMsgText);
+  const files = ePhotos.map(p => p.file);
+  let canShare = false; try{ canShare = !!(files.length && navigator.canShare && navigator.canShare({files})); }catch(e){}
+  $("eShare").hidden = !canShare;
+  $("eWa").textContent = canShare ? "শুধু লেখাটা WhatsApp-এ পাঠান" : "WhatsApp-এ অর্ডার পাঠান";
+  const tip = $("ePhotoTip");
+  if(files.length){
+    tip.hidden = false;
+    tip.innerHTML = canShare
+      ? `<b>সবচেয়ে সহজ:</b> সবুজ বোতামে চাপুন → শেয়ার তালিকা থেকে <b>WhatsApp</b> → <b>${CONFIG.phone.slice(0,5)} ${CONFIG.phone.slice(5)}</b> নম্বরটা বাছুন। ছবি আর অর্ডার একসঙ্গে চলে যাবে।`
+      : `<b>মনে রাখবেন:</b> WhatsApp-এ লেখা পাঠানোর পর 📎 চেপে প্রেসক্রিপশনের ছবি ${bn(files.length)}টি পাঠান। ছবি ছাড়া প্রেসক্রিপশনের ওষুধ আনা যাবে না।`;
+  } else tip.hidden = true;
+  $("emgForm").hidden = true; $("emgDone").hidden = false;
+  try{ $("emgSheet").querySelector(".panel").scrollTop = 0; }catch(e){}
+});
+$("eShare").addEventListener("click", async () => {
+  const files = ePhotos.map(p => p.file);
+  try{ await navigator.share({files, text:eMsgText, title:"ইমার্জেন্সি অর্ডার"}); }
+  catch(e){ if(e && e.name !== "AbortError"){ $("eShare").hidden = true; $("eWa").textContent = "WhatsApp-এ অর্ডার পাঠান"; $("ePhotoTip").innerHTML = `শেয়ার করা গেল না। WhatsApp-এ লেখা পাঠিয়ে 📎 চেপে ছবিগুলো পাঠান।`; } }
+});
+$("eCopy").addEventListener("click", () => {
+  const done = () => { $("eCopy").textContent = "কপি হয়েছে"; setTimeout(() => { $("eCopy").textContent = "অর্ডারের লেখা কপি করুন"; }, 2000); };
+  try{ navigator.clipboard.writeText(eMsgText).then(done, () => {}); }catch(e){}
+});
+$("eBack").addEventListener("click", () => { $("emgForm").hidden = false; $("emgDone").hidden = true; });
 </script>
 
 </body></html>
